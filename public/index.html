@@ -1,0 +1,51 @@
+<html>
+<!-- AIzaSyAzeF6VB_ogSwIfHIFYje4IAY0enmfRum0 -->
+<!-- UUAuUUnT6oDeKwE6v1NGQxug -->
+<head>
+	<meta charset="utf-8">
+	<title>AJAX</title>
+	<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+	<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+</head>
+<body>
+	<h1>Meet Ted</h1>
+	<button type="button" id="videos">Display Talk</button>
+
+<ul class="all-videos"></ul>
+
+	<script type="text/javascript">
+
+	$("#videos").on('click',function(){
+		$.ajax({
+		url: 'https://www.googleapis.com/youtube/v3/search?key={IzaSyAzeF6VB_ogSwIfHIFYje4IAY0enmfRum0 }&channelId={TEDtalksDirector}&part=snippet,id&order=date&maxResults=20',
+		method: 'GET',
+		success: function(data){
+
+			data.forEach(function(m){
+				var nameSpan = '<span class="movie-name">' + m.name + '</span>'
+				var showDetails = '<button id="'+ m._id + '" class="show-details">Show Details</button>'
+				var li = '<li>' + nameSpan + m.rating + showDetails + '</li>'
+				$('.all-videos').append(li);
+			});
+
+	$('.show-details').on('click', function(evt){
+	
+		$.ajax({
+			url: '/videos/' + evt.target.id,
+			method: 'GET',
+			success: function(data){
+				console.log(data)
+			}
+		})
+	})
+}
+})
+})
+		
+
+	
+	</script>
+
+</body>
+</html>
