@@ -19,6 +19,7 @@ userRouter.route('/signup')
   .post(passport.authenticate('local-signup', {
     successRedirect: '/profile',
     failureRedirect: '/signup'
+
   }))
 
 userRouter.get('/profile', isLoggedIn, function(req, res){
@@ -26,18 +27,20 @@ userRouter.get('/profile', isLoggedIn, function(req, res){
   res.render('profile', {user: req.user})
 })
 
-userRouter.get('/logout', function(req, res){
-  //destroy the session, and redirect the user back to the home page
-  req.logout()
-  req.redirect('/')
-})
+//facebook routes
 
 userRouter.get('/auth/facebook', passport.authenticate('facebook', {scope: ['email']}))
 
 userRouter.get('/auth/facebook/callback', passport.authenticate('facebook', {
   successRedirect: '/profile',
-  failureRedirect: '/'
+  failureRedirect: '/signup'
 }))
+
+userRouter.get('/logout', function(req, res){
+  //destroy the session, and redirect the user back to the home page
+  req.logout()
+  req.redirect('/')
+})
 
 //a method used to authorize a user BEFORE allowing them to proceed to the profile page:
 function isLoggedIn (req, res, next){

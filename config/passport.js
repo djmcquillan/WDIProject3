@@ -1,11 +1,13 @@
 // /config/passport.js
 
-var passport          = require('passport'),
-    LocalStrategy     = require('passport-local').Strategy,
-    FacebookStrategy  = require('passport-facebook').Strategy,
-    configAuth        = require('./auth.js')
+var passport          = require('passport')
+var LocalStrategy     = require('passport-local').Strategy
 
-var User          = require('../models/user_model.js')
+var User              = require('../models/user_model.js')
+var FacebookStrategy  = require('passport-facebook').Strategy
+var configAuth        = require('./auth.js')
+
+
 
 passport.serializeUser(function(user,done){
   done(null, user.id)
@@ -27,14 +29,16 @@ passport.use('local-signup', new LocalStrategy({
 }, function(req, email, password, done){
   User.findOne({'local.email': email}, function(err, user){
     if(err) return done (user)
-    if(user) return done(null, false, req.flash('signupMessage', 'that email is taken'))
+    if(user) return done(null, false, req.flash('signupMessage', 'That email is already taken.'))
+
     var newUser = new User()
+    newUser.local.name = req.body.name
     newUser.local.email = email
     newUser.local.password = newUser.generateHash(password)
 
     newUser.save(function(err){
       if(err) throw err
-      return done(null, newUser, null)
+      return done(null, newUser)
     })
   })
 }))
@@ -47,9 +51,9 @@ passport.use('local-login', new LocalStrategy({
   passReqToCallback: true
 }, function(req, email, password, done){
   User.findOne({'local.email': email}, function(err, user){
-    if(err) return done (err)
-    if(!user) return done(null, false, req.flash('loginMessage', 'no user found...'))
-
+    if(err) throw err
+    if(!user) return done(null, false, req.flash('loginMessage', 'No user found...'))
+    if(!user.validPassword(password)) return done(null, false, req.flash('loginMessage', 'invalid credentials'))
     return done(null, user)
   })
 }))

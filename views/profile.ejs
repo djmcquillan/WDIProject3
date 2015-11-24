@@ -9,26 +9,17 @@
     <div class="well">
 
       <% if(user.facebook.id) { %>
-        <h3>Facebook</h3>
+        <h3>Facebook User</h3>
+        <% } else  { %>
+          <h3>Locally Stored User </h3>
+        <% } %>
         <p>
-          <strong>Id</strong>: <%= user.facebook.id %><br>
-          <strong>token</strong>: <%= usr.facebook.token %><br>
-          <strong>email</strong>: <%= user.facebook.email %><br>
-          <strong>name</strong>: <%= user.facebook.name %><br>
-
+          <strong>Name</strong>: <%= user.local.name || user.facebook.id %><br>
+          <strong>id</strong>: <%= user._id %><br>
+          <strong>email</strong>: <%= user.local.email || user.facebook.email %><br>
+          <strong>password</strong>: <%= user.local.password || user.facebook.token %><br>
         </p>
 
-        <% } else { %>
-
-
-      <h3>Locally Stored User</h3>
-      <p>
-        <strong>Name</strong>: <%= user.local.name %><br>
-        <strong>Id</strong>: <%= user._id %><br>
-        <strong>email</strong>: <%= user.local.email %><br>
-        <strong>password</strong>: <%= user.local.password %><br>
-      </p>
-      <% } %>
     </div>
   </div>
 </div>

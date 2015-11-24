@@ -39,7 +39,9 @@ app.use(ejsLayouts)
 //session + passport
 app.use(session({
   secret: "boomchakalaka",
-  cookie:{_expires : 60000000}
+  cookie:{_expires : 60000000},
+  resave: true,
+  saveUninitialized: true
 }))
 
 app.use(passport.initialize())
