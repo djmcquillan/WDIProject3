@@ -19,9 +19,9 @@
 
             <p>
                 <strong>Name</strong>: <%= user.local.name || user.facebook.name || user.meetup.name %><br>
-                <strong>id</strong>:<span id="user_id"> <%= user._id %></span><br>
-                <strong>email</strong>: <%= user.local.email || user.facebook.email %><br>
-                <strong>city</strong>: <%= user.local.city,user.local.state || user.meetup.city,user.meetup.state %><br>
+                <strong>Id</strong>:<span id="user_id"> <%= user._id %></span><br>
+                <strong>Email</strong>: <%= user.local.email || user.facebook.email %><br>
+                <strong>Location</strong>: <%= user.local.city,user.local.state || user.meetup.city,user.meetup.state %><br>
     
             </p>
 

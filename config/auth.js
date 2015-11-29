@@ -3,7 +3,7 @@ module.exports = {
   'facebookAuth': {
       'clientID': '1208037839222800',
       'clientSecret': '0714e32362b489e580f18319a1a2a44b',
-      'callbackURL': 'https://warm-inlet-6359.herokuapp.com/auth/meetup/callback',
+      'callbackURL': 'https://warm-inlet-6359.herokuapp.com/auth/facebook/callback',
       'profileFields': ['emails', 'displayName']
   },
 
