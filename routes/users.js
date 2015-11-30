@@ -55,14 +55,14 @@ userRouter.route('/user')
 userRouter.get('/auth/facebook', passport.authenticate('facebook', {scope: ['email']}))
 
 userRouter.get('/auth/facebook/callback', passport.authenticate('facebook', {
-  successRedirect: '/profile',
+  successRedirect: '/',
   failureRedirect: '/'
 }))
 ////////// End Step 9 ///////////
 userRouter.get('/auth/meetup', passport.authenticate('meetup'))
 
 userRouter.get('/auth/meetup/callback', passport.authenticate('meetup', {
-  successRedirect: '/profile',
+  successRedirect: '/',
   failureRedirect: '/'
 }))
 
