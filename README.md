@@ -54,6 +54,17 @@ video info
 category
 
 ##Document your app's RESTful API.
+
+To access the RESTful API the following endpoints can be used:
+	To access video data
+	- https://warm-inlet-6359.herokuapp.com/api/videos
+	To access user data
+	- https://warm-inlet-6359.herokuapp.com/user
+
+
+
+
+
 The User Schema
 
 	- Local Login
@@ -85,3 +96,11 @@ Video Schema
 - As a USER *with an expanded mind*, I want to be able to pursue my new interests through related local MEETUP groups that are displayed below the video
 - As the CREATORS of the site, we want to consume the TED and MEETUP apis
 - As the CREATORS of the site, we want to gather information on users and their likes and dislikes and store them in our API
+
+##Styleguide
+-During this project our team decided to declare all variables using single line variable declaration
+-It was also decided not to use semi-colons
+
+
+##URL for web app hosted on heroku
+https://warm-inlet-6359.herokuapp.com/
