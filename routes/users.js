@@ -44,6 +44,12 @@ userRouter.route('/signup')
 userRouter.get('/profile', isLoggedIn, function(req, res){
   res.render('profile', {user: req.user})
 })
+userRouter.get('/profile/update', isLoggedIn, function(req, res){
+  res.render('edit', {user: req.user})
+})
+userRouter.put('/profile/udpate',function(req, res){
+  res.render('profile', {user: req.user})
+})
 
 userRouter.route('/profile')
   .delete(usersController.destroy)
