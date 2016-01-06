@@ -1,15 +1,14 @@
 var mongoose = require('mongoose'),
-  Schema = mongoose.Schema
+    Schema = mongoose.Schema
 
 
-//creating schema of our meetup records
-var videoSchema = new Schema({
-  videoId: String,
-  source: String,
-  categoryName: String
-})
-
-//middleware before saving to the db
+//creating the schema of our meetup records
+  var videoSchema = new Schema({
+    videoId: String,
+    source: String,
+    categoryName: String
+  })
+//middleware before saving to the db -MAYBE CHANGE?
 videoSchema.pre('save',function(next){
   if(!this.created_at){
     var currentDate = new Date()
@@ -17,7 +16,6 @@ videoSchema.pre('save',function(next){
   }
   next()
 })
-
 // build a model from the schema
 var Video = mongoose.model('Video', videoSchema)
 
