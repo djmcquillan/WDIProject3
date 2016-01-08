@@ -1,6 +1,6 @@
 <div class="page-header">
 
-    <h2 style="padding-top: 25px"><%= user.local.name || user.facebook.name || user.meetup.name %></h2>
+    <h2 style="padding-top: 25px"><%= user.local.name || user.meetup.name %></h2>
 
     <a href="/logout" class="btn btn-default btn-sm">Logout</a>
 
@@ -9,18 +9,17 @@
     <div class="col-sm-6 col-sm-offset-3">
         <div class="well">
 
-          <% if(user.facebook.id ) {%>
-            <h3>Facebook User</h3>
-          <% } else if(user.meetup.id ) {%>
+          <% if(user.meetup.id ) {%>
             <h3>Meetup User</h3>
           <% } else { %>
             <h3>Locally Stored User</h3>
           <% } %>
 
             <p>
-                <strong>Name</strong>: <%= user.local.name || user.facebook.name || user.meetup.name %><br>
+                <strong>Name</strong>: <%= user.local.name || user.meetup.name %><br>
                 <strong>Id</strong>:<span id="user_id"> <%= user._id %></span><br>
-                <strong>Email</strong>: <%= user.local.email || user.facebook.email %><br>
+                <% if(user.local.email) {%>
+                <strong>Email</strong>: <%} %> <%= user.local.email %><br>
                 <strong>Location</strong>: <%= user.local.city +',' + user.local.state || user.meetup.city+','+ user.meetup.state %><br>
     
             </p>
