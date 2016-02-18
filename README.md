@@ -57,9 +57,9 @@ category
 
 To access the RESTful API the following endpoints can be used:
 	To access video data
-	- https://warm-inlet-6359.herokuapp.com/api/videos
+	- https://spark-wdi-app.herokuapp.com/videos
 	To access user data
-	- https://warm-inlet-6359.herokuapp.com/user
+	- https://spark-wdi-app.herokuapp.com/user
 
 
 
@@ -103,4 +103,4 @@ Video Schema
 
 
 ##URL for web app hosted on heroku
-https://warm-inlet-6359.herokuapp.com/
+https://spark-wdi-app.herokuapp.com/
